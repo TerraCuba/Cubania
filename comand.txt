@@ -1,0 +1,7 @@
+/sethome (Establecer Casa)
+/delhome (Eliminar Casa)
+/myhome (Teletransportame Asta Mi Casa)
+/bal (Ver Mi Saldo)
+/transfer {usuario} {cantidad} (Enviar saldo)
+/baltop (Ver Los Jugadores Mas Ricos)
+/canjear {código promocional} (Canjear Codigos)
