@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Códigos Promocionales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0a0a0a;
+            color: #00ffea;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, #1a1a2e, #16213e);
+        }
+        header {
+            background-color: #0f3460;
+            padding: 15px 0;
+            box-shadow: 0px 4px 10px rgba(0, 255, 234, 0.3);
+            position: relative;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 2em;
+            background: none;
+            border: none;
+            color: #00ffea;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #00ffea;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background-color: #0f3460;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                width: 100%;
+                box-shadow: 0px 4px 10px rgba(0, 255, 234, 0.3);
+            }
+            nav ul.show {
+                display: flex;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+        .code-container {
+            margin: 20px;
+            padding: 20px;
+            background-color: #0f3460;
+            box-shadow: 0px 4px 10px rgba(0, 255, 234, 0.3);
+            border-radius: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="menu-toggle">&#9776;</button>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="code.html">Códigos Promocionales</a></li>
+                <li><a href="shop.html">Tienda</a></li>
+                <li><a href="mejor.html">Mejoras</a></li>
+                <li><a href="evento.html">Eventos</a></li>
+                <li><a href="features.html">Características</a></li>
+                <li><a href="comand.html">Comandos</a></li>
+                <li><a href="boss.html">Jefes</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Códigos Promocionales</h1>
+        <div id="codes-list" class="code-container">
+            <p>Cargando códigos...</p>
+        </div>
+    </main>
+    <script>
+        document.querySelector(".menu-toggle").addEventListener("click", function() {
+            document.querySelector("nav ul").classList.toggle("show");
+        });
+        
+        async function loadCodes() {
+            try {
+                let response = await fetch('code.txt');
+                let text = await response.text();
+                let codes = text.split('\n');
+                let codeContainer = document.getElementById("codes-list");
+                codeContainer.innerHTML = "";
+
+                codes.forEach((code, index) => {
+                    if (code.trim() !== "") {
+                        let p = document.createElement("p");
+                        p.textContent = `Código #${index + 1}: ${code.trim()}`;
+                        codeContainer.appendChild(p);
+                    }
+                });
+            } catch (error) {
+                document.getElementById("codes-list").innerHTML = "<p>Error al cargar los códigos.</p>";
+            }
+        }
+
+        loadCodes();
+    </script>
+
+        <script>
+        async function loadContent() {
+            let fileName = document.body.getAttribute("data-file");
+            if (!fileName) return;
+
+            try {
+                let response = await fetch(fileName);
+                let text = await response.text();
+                let items = text.split(/\n\s*\n/);
+                let contentContainer = document.getElementById("content-list");
+                contentContainer.innerHTML = "";
+
+                items.forEach((item, index) => {
+                    item = item.trim();
+                    if (item !== "") {
+                        if (item.match(/\.(jpg|jpeg|png|gif)$/i)) {
+                            let img = document.createElement("img");
+                            img.src = item;
+                            img.alt = "Imagen";
+                            img.style.maxWidth = "100%";
+                            contentContainer.appendChild(img);
+                        } else {
+                            let p = document.createElement("p");
+                            p.textContent = item;
+                            contentContainer.appendChild(p);
+                        }
+                        if (index < items.length - 1) {
+                            contentContainer.appendChild(document.createElement("hr"));
+                        }
+                    }
+                });
+            } catch (error) {
+                document.getElementById("content-list").innerHTML = "<p>Error al cargar el contenido.</p>";
+            }
+        }
+        loadContent();
+        </script>
+        
+</body>
+</html>
