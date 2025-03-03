@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terraria - Cubania</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0a0a0a;
+            color: #00ffea;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, #1a1a2e, #16213e);
+        }
+        header {
+            background-color: #0f3460;
+            padding: 15px 0;
+            box-shadow: 0px 4px 10px rgba(0, 255, 234, 0.3);
+            position: relative;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 2em;
+            background: none;
+            border: none;
+            color: #00ffea;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #00ffea;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background-color: #0f3460;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                width: 100%;
+                box-shadow: 0px 4px 10px rgba(0, 255, 234, 0.3);
+            }
+            nav ul.show {
+                display: flex;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+        .button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #00ffea;
+            color: black;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 255, 234, 0.3);
+            transition: 0.3s;
+        }
+        .button:hover {
+            background-color: #00ccbb;
+        }
+        .button img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="menu-toggle">&#9776;</button>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="code.html">Códigos Promocionales</a></li>
+                <li><a href="shop.html">Tienda</a></li>
+                <li><a href="mejor.html">Mejoras</a></li>
+                <li><a href="evento.html">Eventos</a></li>
+                <li><a href="features.html">Características</a></li>
+                <li><a href="comand.html">Comandos</a></li>
+                <li><a href="boss.html">Jefes</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1 id="connect">¡Conéctate Ahora!</h1>
+        <p>Explora un mundo lleno de aventuras, misterios y grandes promociones.</p>
+        <p>Encuentra contenido exclusivo, mejora tu experiencia y descubre todo lo que tenemos para ti.</p>
+        <h2>¡Únete a nuestro servidor!</h2>
+        <p>IP: <strong>cubania.axenthost.me</strong></p>
+        <p>PUERTO: <strong>40224</strong></p>
+        <a href="#" class="button" id="connect-btn">Conéctate Ahora</a>
+    </main>
+    <footer>
+        <p>Contáctanos por WhatsApp</p>
+        <a href="https://wa.me/50135089" class="button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"> WhatsApp
+        </a>
+    </footer>
+    <script>
+        document.querySelector(".menu-toggle").addEventListener("click", function() {
+            document.querySelector("nav ul").classList.toggle("show");
+        });
+        
+        document.getElementById("connect").addEventListener("click", function() {
+            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                window.location.href = "terraria://";
+            } else {
+                window.location.href = "terraria.exe";
+            }
+        });
+    </script>
+</body>
+</html>
