@@ -1,7 +1,7 @@
 Compra Rangos
-sp.png
-Y si quires compra de estos
 pre.png
+Y si quires compra de estos
+sp.png
 para tener particulas como estas
 ejemplo1.png
 ejemplo2.png
